@@ -204,3 +204,20 @@ df_indicators.iat[315,2] = 8.9 # In case change SDG
 # 318 suggestion: 17.13
 # 319 suggestion: 17.13
 # 320 suggestion: 17.13
+
+# Recoding the new set of indicators
+
+df_indicators2 = pd.read_csv('test_sample_3.csv')
+
+# 0 SDG should be coded as 4
+# 1 SDG should be coded as 4
+# 2 SDG should be coded as 4
+# 3 SDG should be coded as 4
+# 4 SDG should be coded as 4
+
+# 24 suggesion: 3.3
+
+# 49 SDG should be coded as 4
+# 50 SDG should be coded as 4
+# 51 SDG should be coded as 4
+# 52 SDG should be coded as 4
