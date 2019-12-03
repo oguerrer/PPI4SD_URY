@@ -21,7 +21,7 @@ colYears = np.array([str(year) for year in years])
 home =  os.getcwd()[0:-4]
 
 
-df = pd.read_csv(home+"/data/raw_complete.csv", 
+df = pd.read_csv(home+"data/raw_complete.csv", 
                  sep='\t', low_memory=False, encoding='utf-16')
 df['goal'][df.goal=='16a'] = '16'
 df['goal'][df.goal=='16b'] = '16'
@@ -37,12 +37,12 @@ for intex, row in dfu.iterrows():
         newRows.append([row.seriesName, int(goal), row.target, len(obs), '-'.join(obs), np.nan, np.nan])
 dfuf = pd.DataFrame(newRows, columns=['Nombre', 'ODS', 'target', 'Observaciones', 'Años', 'Importante', 'Instrumental'])
 dfuf.sort_values(['ODS'], inplace=True)
-dfuf.to_excel(home+"/data/test_sample.xlsx", index=False, encoding='utf-16')
+dfuf.to_excel(home+"data/test_sample.xlsx", index=False, encoding='utf-16')
 
 
 
 
-info_names = pd.read_excel(home+'/data/indices_nombres.xlsx')
+info_names = pd.read_excel(home+'data/indices_nombres.xlsx')
 #df = df[np.in1d(df.seriesCode, info_names.seriesCode)]
 df = df[(df.seriesCode != 'EOSQ146') & (df.seriesCode != 'CC.EST') & (df.seriesCode != 'RL.EST')]
 
@@ -76,7 +76,7 @@ for code, group in df.groupby('seriesCode'):
 
 dfn = pd.DataFrame(new_rows, columns=df.columns)
 dfn.sort_values(['goal', 'seriesCode'], inplace=True)
-dfn.to_csv(home+"/data/norm_complete.csv", index=False, sep='\t', encoding='utf-16')
+dfn.to_csv(home+"data/norm_complete.csv", index=False, sep='\t', encoding='utf-16')
 
 dfn = dfn[dfn.countryCode=='URY']
 dfn.reset_index(inplace=True)
@@ -100,7 +100,7 @@ dff = pd.DataFrame(newRows, columns=dfn.columns)
 
 dff = dff[(~np.isnan(dff[colYears].values)).sum(axis=1)>6]
 
-ins = pd.read_excel(home+'/data/test_sample_Uruguay_SPG_VNR.xls')
+ins = pd.read_excel(home+'data/test_sample_Uruguay_SPG_VNR.xls')
 
 
 not_in = list((set(dff.seriesName) - set(ins.Nombre)))
